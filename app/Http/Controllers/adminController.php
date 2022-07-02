@@ -27,20 +27,21 @@ class adminController extends Controller
 
     public function send_credentials(Request $request){
 
-        
+        $usuario = request('email');
         $subject = "Asunto del correo";
         $for = request('email');
+        $password= substr(md5($for), 0, 8);
 
 
-        Mail::send('usuario.login',$request->all(), function($msj) use($subject,$for){
+        Mail::send('admin.credenciales',compact('password', 'usuario'), function($msj) use($subject,$for){
 
-            $msj->from("nominas-rh@hotmail.com","NombreQueApareceráComoEmisor");
+            $msj->from("nominas-rh@hotmail.com","Sistemas Pabsa");
             $msj->subject($subject);
             $msj->to($for);
 
         });
 
-        return 'back();';
+        return back()->with("enviado", "Tus credenciales fueron enviadas a: <b> $for </b> ");
 
     }
 }

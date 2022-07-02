@@ -1,7 +1,16 @@
 @extends('plantilla')
 @include('admin.navegacion')
 <div class="container">
-    <div class="row mt-5 justify-content-center ">
+    <div class="row justify-content-center">
+        <div class="col-6  text-center mt-5">
+            @if (session('enviado'))
+                <div class="alert alert-success text-center font-weight-bold">
+                    {!!session('enviado')!!}
+                </div>
+            @endif
+        </div>
+    </div>
+    <div class="row mt-2 justify-content-center ">
         <div class="col-4 mt-5 shadow-sm bg-white px-5">
             <h4 class="text-center mt-5">Login Uusario</h4>
             <form action="">
