@@ -32,4 +32,5 @@ Route::post('/agregar_admistrador', [adminController::class, 'store'])->name('ag
 //Ruta que envia el email que les envia las conraseña a los usuarios
 Route::post('/envio_credenciales', [adminController::class, 'send_credentials'])->name('send_credentials');
 
-Route::post('/buscar', [trabajadorController::class, 'buscar'])->name('buscar');
+//Ruta que se encarga de loguar al usuario
+Route::post('/login-user', [userController::class, 'login'])->name('login_usuario');

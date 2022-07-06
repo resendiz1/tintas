@@ -1,6 +1,8 @@
 @extends('plantilla')
 @section('contenido')
-    
+
+
+
 <div class="container">
     <div class="row mt-5 justify-content-center">
         <div class="col-12 text-center mt-3 mb-2 bg-primary text-white">
@@ -19,26 +21,26 @@
             </div>
         </div>
         <div class="col-12 mb-1 bg-white shadow-sm pt-4">
-            <div class="row justify-content-center text-center">
-                <div class="col-2">
+            <div class="row justify-content-center ">
+                <div class="col-1">
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="negra" required>
                         <label class="custom-control-label" for="negra"> <b> Negra </b></label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="amarilla" required>
+                        <input type="checkbox" class="custom-control-input" id="amarilla" required >
                         <label class="custom-control-label" for="amarilla"><b>Amarilla</b></label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="azul" required>
                         <label class="custom-control-label" for="azul"><b>Azul</b></label>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-1">
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="rosa" required>
                         <label class="custom-control-label" for="rosa"><b>Rosa</b></label>
