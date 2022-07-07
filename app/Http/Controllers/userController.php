@@ -12,10 +12,10 @@ class userController extends Controller
     public function  store(){
 
         //Recibo el email y lo guado en la variable con el mismo nombre
-        $email = request('email');
+        $email = substr(md5(request('email')),0,8);
 
-        //Encripto el email a MD5 y luego tomo los primeros 8 caracteres para encriptarlos con el Hash de Laravel
-      return $password_encriptada = $this->Hasher::make(substr(md5($email),0,8));
+        //Encripto el los primeros 8 caracteres del MD5 del email
+        $password_encriptada = Hash::make($email);
 
 
        
@@ -39,22 +39,26 @@ class userController extends Controller
     public function login(){
 
        // $credenciales = request()->only('email', 'password');
-       //La puta contraseña debe ir en texto plano y se encripta al momento de irla a comparar
+       //La contraseña debe ir en texto plano y se encripta al momento de irla a comparar
        //Obvio aqui no va en texto plano, la encripte en MD5 para que no se den cuenta que estoy usando su correo como contraseña XD
+
+
+        Hash::make('password');
        
         $credenciales = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
             'email' => request('email'),
-            'password' => Hash::make(substr(md5(request('email')), 0, 8)),
+            'password' =>request('password')
         ];
+
 
 
 
         //Hash encripta las contraseñas de laravel para no guardarlas en texto plano
         if(Auth::attempt($credenciales)){
-            return 'A perro ya funciona el login';
+            request()->session()->regenerate();
+            return redirect()->route('dashboard_usuario');
         }
         else{
-            
             return 'No funciona una mierda';
         }
 

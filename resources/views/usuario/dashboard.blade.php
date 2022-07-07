@@ -14,8 +14,9 @@
                 </div>
                 <div class="col-4 text-center">
                     <h3>Nuevo pedido de tinta</h3>
-                    <h4>Arturo Resendiz López</h4>
-                    <h6>Encargado de sistemas</h6>
+                    <h4>{{Auth::User()->name}}</h4>
+                    <h6>{{Auth::User()->puesto}}</h6>
+                    <small>{{Auth::User()->email}}</small>
                 </div>
                 <div class="col-4"></div>
             </div>

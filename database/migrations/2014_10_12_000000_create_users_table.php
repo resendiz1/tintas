@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('puesto');
-            $table->string('planta');
+            $table->string('puesto')->nullable();
+            $table->string('planta')->nullable();
             $table->string('password');
+            $table->string('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

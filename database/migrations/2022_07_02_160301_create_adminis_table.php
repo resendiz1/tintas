@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('adminis', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('email');
+            $table->string('name');
+            $table->string('email')->unique();
             $table->string('planta');
             $table->string('password');
             $table->timestamps();

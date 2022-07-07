@@ -18,9 +18,20 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','admin.dashboard')->name('dashboard_admin');
 Route::view('/alta_admin', 'admin.alta_admin')->name('agregar_admin');
 Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios');
-Route::view('/dashboard_usuario', 'usuario.dashboard')->name('dashboard_usuario');
-Route::view('/login_usuario', 'usuario.login')->name('usuario_login');
-Route::view('/login_admin', 'admin.login')->name('admin_login');
+
+Route::view('/login_usuario', 'usuario.login')->name('login')->middleware('guest');
+
+Route::view('/dashboard_usuario', 'usuario.dashboard')->name('dashboard_usuario')->middleware('auth');
+
+
+
+// Route::view('/login_admin', 'admin.login')->name('admin_login');
+Route::get('/login_admin', [adminController::class, 'showLoginForm'])->name('admin_login');
+
+Route::post('/login_admin', [adminController::class, 'login'])->name('administrador_login'); 
+
+
+
 
 //Ruta que agrega a los usuario s a la base de datos
 Route::post('/agregar_usuario', [userController::class, 'store'])->name('agregar.usuario');
