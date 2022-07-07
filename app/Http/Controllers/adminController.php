@@ -34,7 +34,7 @@ class adminController extends Controller
 
     //Me redirige a 
     protected function authenticated(){
-        return redirect()->route('dashboard_admin');
+        return redirect()->route('admin.dashboard');
     }
 
     

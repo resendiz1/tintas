@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Pedido;
 use App\Models\User;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class userController extends Controller
 {
@@ -63,6 +66,53 @@ class userController extends Controller
         }
 
 
+    }
+
+
+
+    public function pedido(){
+
+        //Esto obtiene el ID del usuario que tiene la session abierta
+        $id_usuario = Auth::user()->id;
+
+        //Esto me guarda una copia de la imagen en mi carpeta public, acceso a esta carpeta mediante el php artisan storage:link
+        $imagen = request()->file('foto_tanque')->store('public');
+
+
+
+
+        //configurando el envio de correos electronicos
+        $usuario = Auth::user()->email;
+        $subject = "Pedido de tintas para ". Auth::user()->name .' de ' . Auth::user()->puesto ;
+        $for = Auth::user()->email;
+        $datos = request();
+
+
+        Mail::send('admin.pedido',compact('datos', 'usuario'), function($msj) use($subject,$for){
+
+            $msj->from("nominas-rh@hotmail.com","Sistemas Pabsa");
+            $msj->subject($subject);
+            $msj->to($for);
+
+        });
+
+
+
+
+
+
+        Pedido::create([
+            'numero' => request('numero'),
+            'negra' => request('negra'),
+            'amarilla' => request('amarilla'),
+            'azul' => request('azul'),
+            'rosa' => request('rosa'),
+            'foto_tanques' => $imagen,
+            'id_usuario' =>  $id_usuario
+          ]);
+
+
+          return back()->with('enviado', 'Tu pedido fue enviado');
     }
 
 

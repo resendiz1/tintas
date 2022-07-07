@@ -45,3 +45,8 @@ Route::post('/envio_credenciales', [adminController::class, 'send_credentials'])
 
 //Ruta que se encarga de loguar al usuario
 Route::post('/login-user', [userController::class, 'login'])->name('login_usuario');
+
+
+
+//Ruta que se encarga de enviar los pedidos de tintas
+Route::post('/pedidos-tintas', [userController::class, 'pedido'])->name('usuario.pedido');
