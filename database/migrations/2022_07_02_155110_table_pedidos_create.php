@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('azul')->nullable();
             $table->string('rosa')->nullable();
             $table->string('foto_tanques');
-            $table->string('entregada');
+            $table->string('entregada')->nullable();
             $table->unsignedBigInteger('id_usuario');
             $table->rememberToken();
             $table->timestamps();

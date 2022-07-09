@@ -10,5 +10,5 @@ class Pedido extends Model
     use HasFactory;
 
 
-    protected $fllable = ['numero', 'negra', 'amarilla', 'azul', 'rosa', 'foto_tanuqes', 'entregada', 'id_usuario'];
+    protected $fillable = ['numero', 'negra', 'amarilla', 'pedido', 'azul', 'rosa', 'foto_tanques', 'entregada', 'id_usuario'];
 }

@@ -9,7 +9,7 @@
         <div class="col-12 mt-5 shadow-sm bg-white p-4">
             <div class="row p-4">
                 <div class="col-6 border p-3">
-                    <h5 class="text-center">Arturo Resendiz López</h5>
+                    <h5 class="text-center">{{Auth::Admini()->name}}</h5>
                     
                     <h6 class="text-center">Encargado de sistemas</h6>
                     <h6 class="text-center">Planta 1</h6>

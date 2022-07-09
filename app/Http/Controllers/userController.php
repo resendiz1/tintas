@@ -76,7 +76,7 @@ class userController extends Controller
         $id_usuario = Auth::user()->id;
 
         //Esto me guarda una copia de la imagen en mi carpeta public, acceso a esta carpeta mediante el php artisan storage:link
-        $imagen = request()->file('foto_tanque')->store('public');
+        $imagen = request()->file('foto_tanques')->store('public');
 
 
 
@@ -84,25 +84,21 @@ class userController extends Controller
         //configurando el envio de correos electronicos
         $usuario = Auth::user()->email;
         $subject = "Pedido de tintas para ". Auth::user()->name .' de ' . Auth::user()->puesto ;
-        $for = Auth::user()->email;
+        $for = [Auth::user()->email, 'arturo.resendiz@grupopabsa.com'];
         $datos = request();
 
 
         Mail::send('admin.pedido',compact('datos', 'usuario'), function($msj) use($subject,$for){
 
-            $msj->from("nominas-rh@hotmail.com","Sistemas Pabsa");
+            $msj->from("appresendiz@zohomail.com","Sistemas Pabsa");
             $msj->subject($subject);
             $msj->to($for);
 
         });
 
 
-
-
-
-
         Pedido::create([
-            'numero' => request('numero'),
+            'numero' => request('numero_tinta'),
             'negra' => request('negra'),
             'amarilla' => request('amarilla'),
             'azul' => request('azul'),

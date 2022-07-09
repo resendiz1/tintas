@@ -54,10 +54,20 @@
             </div>
         </div>
         
-        <div class="col-12 p-5 m-3 bg-white shadow-sm">
+        <div class="col-12 p-5  bg-white shadow-sm">
+            <div class="row justify-content-center">
+                <div class="col-3 text-center">
+                    @if (session('enviado'))
+                        <div class="alert alert-success p-1">
+                            <i class="fa fa-circle-check"></i>
+                            {{session('enviado')}}
+                        </div>
+                    @endif
+                </div>
+            </div>
             <div class="row justify-content-center">
                 <div class="col-4 m-3">
-                    <label for="">Número de tinta</label>
+                    <label for="" class="h4">Número de tinta</label>
                     <select class="form-select" name="numero_tinta" aria-label="Default select example">
                         <option value="544">544</option>
                         <option value="504">504</option>
@@ -65,8 +75,8 @@
                     </select>       
                 </div>
                 <div class="col-4 m-3">
-                    <label for="">Cargar foto de los tanques de tinta</label>
-                    <input type="file" name="foto_tanque" class="form-control" required>
+                    <label for="" class="h4">Cargar foto de los tanques de tinta</label>
+                    <input type="file" name="foto_tanques" class="form-control" required>
                 </div>
                 <div class="col-4 text-center shadow-sm p-4">
                     <img src="https://1.bp.blogspot.com/-p0U83nYKKGU/UpKKwA1ybjI/AAAAAAAATAw/IcKmPxqgTgQ/s1600/impresora+canon+con+sistema+de+tinta+continua.jpg" class="img-fluid"  alt="">
