@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-5 shadow p-3 px-5 mt-5">
+        <div class="col-5 shadow bg-white p-3 px-5 mt-5">
             <h1 class="text-center">Alta de usuarios</h1>
             <form action="{{route('agregar.usuario')}}" method="POST">
                 @csrf @method('POST')

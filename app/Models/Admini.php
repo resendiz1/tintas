@@ -11,5 +11,5 @@ class Admini extends Authenticatable
     use HasFactory;
    protected $table = 'adminis';
 
-    protected $fillable = ['nombre', 'email', 'planta', 'password'];
+    protected $fillable = ['name', 'email', 'planta', 'password'];
 }

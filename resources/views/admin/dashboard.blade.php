@@ -6,35 +6,50 @@
         <div class="col-12 p-3 shadow-sm bg-white text-center">
             <h1>Pendientes por entregar</h1>
         </div>
-        <div class="col-12 mt-5 shadow-sm bg-white p-4">
+
+@forelse ($pedidos as $pedido)           
+        <div class="col-6 mt-5 shadow-sm bg-white p-4">
             <div class="row p-4">
-                <div class="col-6 border p-3">
-                    <h5 class="text-center">{{Auth::Admini()->name}}</h5>
-                    
-                    <h6 class="text-center">Encargado de sistemas</h6>
+
+                <div class="col-12 border p-3">
+                    <h5 class="text-center">{{$pedido->name}}</h5>
+                    <h6 class="text-center">{{$pedido->puesto}}</h6>
                     <h6 class="text-center">Planta 1</h6>
                     <hr>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-12">
-                            <h6 class="text-center"> <b> Requisición : </b> 20 de Junio de 2022</h6>
+                            <h6 class="text-center"> <b> Requisición : </b> {{$pedido->created_at}}</h6>
                             <h5 class="text-center">Tintas requeridas</h5>
                         </div>
-                        <div class="col-3 azul">
-                            Azul 544
-                        </div>
-                        <div class="col-3 negra">
-                            Negra 544
-                        </div>
-                        <div class="col-3 amarilla">
-                            Amarilla 544
-                        </div>
-                        <div class="col-3 rosa">
-                            Rosa 544
-                        </div>
+
+                        @if ($pedido->azul)
+                            <div class="col-3 azul">
+                                Azul {{$pedido->numero}}
+                            </div>  
+                        @endif
+
+                        @if ($pedido->negra)
+                            <div class="col-3 negra">
+                                Negra {{$pedido->numero}}
+                            </div>
+                        @endif
+
+                        @if ($pedido->amarilla)
+                            <div class="col-3 amarilla">
+                                Amarilla {{$pedido->numero}}
+                            </div>
+                        @endif
+
+                        @if ($pedido->rosa)
+                            <div class="col-3 rosa">
+                                Rosa {{$pedido->numero}}
+                            </div>
+                        @endif
+
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-center p-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJVK7vVnyx2O6FfXHQkM0CutC9z-C-wiA-gQ&usqp=CAU" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="img-fluid" alt="">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center p-5">
+                            <img src="{{asset(Storage::url($pedido->foto_tanques))}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="img-fluid" alt="">
                         </div>
                         <div class="col-12 mt-5 text-center">
                             <button class="btn btn-success btn-sm">
@@ -54,15 +69,23 @@
                             <h5 class="modal-title px-0" id="staticBackdropLabel">Tanques</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                    <div class="modal-body text-center p-0">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJVK7vVnyx2O6FfXHQkM0CutC9z-C-wiA-gQ&usqp=CAU"  alt="">
-                    </div>
+                   
+                        <img src="{{asset(Storage::url($pedido->foto_tanques))}}"  alt="">
+                    
                     
                 </div>
             </div>
         </div>
         <!-- Modal -->
         </div>
+
+@empty
+            
+@endforelse
+
+
+
+
     </div>
 </div>
 @endsection

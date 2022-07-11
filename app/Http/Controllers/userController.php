@@ -41,13 +41,9 @@ class userController extends Controller
 
     public function login(){
 
-       // $credenciales = request()->only('email', 'password');
-       //La contraseña debe ir en texto plano y se encripta al momento de irla a comparar
-       //Obvio aqui no va en texto plano, la encripte en MD5 para que no se den cuenta que estoy usando su correo como contraseña XD
+        $recuerdame = request()->filled('remember');
 
 
-        Hash::make('password');
-       
         $credenciales = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
             'email' => request('email'),
             'password' =>request('password')
@@ -57,12 +53,12 @@ class userController extends Controller
 
 
         //Hash encripta las contraseñas de laravel para no guardarlas en texto plano
-        if(Auth::attempt($credenciales)){
+        if(Auth::attempt($credenciales, $recuerdame)){
             request()->session()->regenerate();
             return redirect()->route('dashboard_usuario');
         }
         else{
-            return 'No funciona una mierda';
+            return back()->with('login_fail', 'El usuario o la contraseña son incorrectas, verifica por favor');
         }
 
 
@@ -98,13 +94,15 @@ class userController extends Controller
 
 
         Pedido::create([
+            'name' => Auth::user()->name,
+            'puesto' => Auth::user()->puesto,
             'numero' => request('numero_tinta'),
             'negra' => request('negra'),
             'amarilla' => request('amarilla'),
             'azul' => request('azul'),
             'rosa' => request('rosa'),
             'foto_tanques' => $imagen,
-            'id_usuario' =>  $id_usuario
+            'user_id' =>  $id_usuario
           ]);
 
 

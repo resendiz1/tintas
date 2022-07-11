@@ -24,10 +24,10 @@
                         <input type="text" name="password" value="{{old('password')}}" class="form-control">
                     </div>
                     <div class="form-group mt-4">
-                        <label for="">
-                            <input type="checkbox" name=""  id="" >
-                            Recordar la sesión
-                        </label>
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" name="remember" id="remember"  >
+                            <label class="custom-control-label" for="remember"><b>Recuerdame (como el gansito)</b></label>
+                        </div>
                     </div>
                    
                     <div class="form-group text-center">
@@ -49,6 +49,8 @@
                     <select class="form-select" aria-label="Default select example" name="email">
                         <option selected >Selecciona tu correo</option>
                         <option value="arturo.resendiz@grupopabsa.com">arturo.resendiz@grupopabsa.com</option>
+                        <option value="rh.auxiliar@grupopabsa.com">rh.auxiliar@grupopabsa.com</option>
+                        <option value="pl3.recepcion@grupopabsa.com">pl3.recepcion@grupopabsa.com</option>
                     </select>
                     <div class="form-group text-center mt-3">
                         <button class="btn btn-success">

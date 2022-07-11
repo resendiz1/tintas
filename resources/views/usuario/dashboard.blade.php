@@ -10,6 +10,7 @@
                 <div class="col-4 text-start">
                     <button class="btn btn-danger btn-sm  mt-4">
                         <i class="fa fa-xmark-circle pt-1"></i>
+                        Salir
                     </button>
                 </div>
                 <div class="col-4 text-center">
@@ -76,10 +77,10 @@
                 </div>
                 <div class="col-4 m-3">
                     <label for="" class="h4">Cargar foto de los tanques de tinta</label>
-                    <input type="file" name="foto_tanques" class="form-control" required>
+                    <input type="file" id="foto_tanques" name="foto_tanques" class="form-control" required>
                 </div>
-                <div class="col-4 text-center shadow-sm p-4">
-                    <img src="https://1.bp.blogspot.com/-p0U83nYKKGU/UpKKwA1ybjI/AAAAAAAATAw/IcKmPxqgTgQ/s1600/impresora+canon+con+sistema+de+tinta+continua.jpg" class="img-fluid"  alt="">
+                <div class="col-4 text-center shadow-sm p-4" id="preview" >
+                    <img src="https://1.bp.blogspot.com/-p0U83nYKKGU/UpKKwA1ybjI/AAAAAAAATAw/IcKmPxqgTgQ/s1600/impresora+canon+con+sistema+de+tinta+continua.jpg" class="img-fluid" id="foto"  alt="">
                 </div>
                 <div class="col-12 text-center mt-3">
                     <button class="btn btn-primary">

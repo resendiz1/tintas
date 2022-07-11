@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('puesto');
             $table->string('numero');
             $table->string('negra')->nullable();
             $table->string('amarilla')->nullable();
@@ -22,10 +24,10 @@ return new class extends Migration
             $table->string('rosa')->nullable();
             $table->string('foto_tanques');
             $table->string('entregada')->nullable();
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('user_id');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

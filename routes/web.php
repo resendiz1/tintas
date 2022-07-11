@@ -15,14 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/','admin.dashboard')->name('dashboard_admin');
-Route::view('/alta_admin', 'admin.alta_admin')->name('agregar_admin');
-Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios');
+Route::view('/alta_admin', 'admin.alta_admin')->name('agregar_admin')->middleware('auth:adminis');
+Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios')->middleware('auth:adminis');
 
 Route::view('/login_usuario', 'usuario.login')->name('login')->middleware('guest');
 
+
+
+
+
 Route::view('/dashboard_usuario', 'usuario.dashboard')->name('dashboard_usuario')->middleware('auth');
 
+
+//Ruta del dashboard el admiistrador
+
+// Route::view('/','admin.dashboard')->name('dashboard_admin');
+Route::get('/dashboard_admin', [adminController::class, 'dahsboard'])->name('admin.dashboard')->middleware('auth:adminis');
 
 
 // Route::view('/login_admin', 'admin.login')->name('admin_login');
@@ -34,10 +42,10 @@ Route::post('/login_admin', [adminController::class, 'login'])->name('administra
 
 
 //Ruta que agrega a los usuario s a la base de datos
-Route::post('/agregar_usuario', [userController::class, 'store'])->name('agregar.usuario');
+Route::post('/agregar_usuario', [userController::class, 'store'])->name('agregar.usuario')->middleware('auth:adminis');
 
 //Ruta que agrega a los administradores a la base de datos
-Route::post('/agregar_admistrador', [adminController::class, 'store'])->name('agregar.administrador');
+Route::post('/agregar_admistrador', [adminController::class, 'store'])->name('agregar.administrador')->middleware('auth:adminis');
 
 
 //Ruta que envia el email que les envia las conraseña a los usuarios
