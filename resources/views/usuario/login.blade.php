@@ -31,11 +31,11 @@
                     @csrf @method('POST')
                     <div class="form-group mb-3">
                         <label for="">Correo: </label>
-                        <input type="text" name="email" value="{{old('usuario')}}" class="form-control">
+                        <input type="text" name="email" value="{{old('usuario')}}" class="form-control" required>
                         <div class="form-group">
                             <label for="">Contraseña: </label>
                         </div>
-                        <input type="text" name="password" value="{{old('password')}}" class="form-control">
+                        <input type="password" name="password"  value="{{old('password')}}" class="form-control" required>
                     </div>
                     <div class="form-group mt-4">
                         <div class="custom-control custom-checkbox mb-3">
@@ -57,6 +57,9 @@
         <div class="row justify-content-center mt-5">
             <div class="col-3 bg-white shadow-sm p-4">
                 <h4 class="text-center">Enviar contraseña a tu Email</h4>
+                @error('email')
+                    {{$errors->first()}}
+                @enderror
                 <form action="{{route('send_credentials')}}" method="POST">
                     @csrf @method('POST')
 

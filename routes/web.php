@@ -23,17 +23,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [userController::class, 'index_login'])->name('login')->middleware('guest');
 
 //Ruta que me ayuda a ecrrar la sesión del usuario
-Route::post('/dashboard_usuario/logout', [adminController::class, 'logout'])->name('logout_user');
+Route::post('/dashboard_usuario/logout', [adminController::class, 'logout'])->name('logout_user')->middleware('auth');
 
 Route::view('/dashboard_usuario', 'usuario.dashboard')->name('dashboard_usuario')->middleware('auth');
 
-//Ruta que se encarga de loguar al usuario
+//Ruta que se encarga de loguar al usuario, manda los datos para ser comparados
 Route::post('/login-user', [userController::class, 'login'])->name('login_usuario');
 
 
-
 //Ruta que se encarga de enviar los pedidos de tintas
-Route::post('/pedidos-tintas', [userController::class, 'pedido'])->name('usuario.pedido');
+Route::post('/pedidos-tintas', [userController::class, 'pedido'])->name('usuario.pedido')->middleware('auth');
 
 
 

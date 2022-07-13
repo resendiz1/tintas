@@ -9,8 +9,15 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body{
-            background-color: lightgrey;
+        body {
+    
+            background-image: url('img/background.jpg');
+            background-position-x:center;
+            background-position-y:center;
+            height: 1000px;
+     
+
+ 
         }
     </style>
     <title>Tintas</title>
@@ -24,6 +31,9 @@
 
 <script src="js/app.js"></script>
 <script>
+
+    history.forward()
+
     //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos
     if(document.getElementById('foto_tanques')){
         var input = document.getElementById('foto_tanques'),

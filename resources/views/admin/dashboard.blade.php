@@ -3,8 +3,8 @@
 @include('admin.navegacion')   
 <div class="container mt-5">
     <div class="row mt-5">
-        <div class="col-12 p-3 shadow-sm bg-white text-center">
-            <h1>Pendientes por entregar</h1>
+        <div class="col-12 p-2 shadow-sm text-center rounded-pill bg-primary text-white">
+            <h3>Pendientes por entregar</h3>
         </div>
 
 @forelse ($pedidos as $pedido)           

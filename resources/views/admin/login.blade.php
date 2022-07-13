@@ -20,7 +20,7 @@
                     <label for="">Contraseña: </label>
                     <input type="text" class="form-control" name="password">
                 </div>
-                <div class="form-group text-center mt-5">
+                <div class="form-group text-center mt-5 mb-4">
                     <button class="btn btn-success">
                         Entrar
                     </button>
