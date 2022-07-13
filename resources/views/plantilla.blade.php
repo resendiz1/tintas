@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body{
@@ -23,7 +24,7 @@
 
 <script src="js/app.js"></script>
 <script>
-    //Cachamos el elemento por el id
+    //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos
     if(document.getElementById('foto_tanques')){
         var input = document.getElementById('foto_tanques'),
         img_tag = document.getElementById('foto')

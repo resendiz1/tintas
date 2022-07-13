@@ -6,10 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-4 p-3 text-center">
             @if (session('success'))
-                |<div class="alert alert-success">
+            <div class="alert alert-success">
                     {{session('success')}}
-                </div>
-
+             </div>
             @endif
         </div>
     </div>

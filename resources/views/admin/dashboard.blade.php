@@ -80,7 +80,8 @@
         </div>
 
 @empty
-            
+           
+<li class="h4 text-danger bg-white p-5">Sin entregas pendientes</li>
 @endforelse
 
 

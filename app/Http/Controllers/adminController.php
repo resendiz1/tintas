@@ -65,6 +65,12 @@ class adminController extends Controller
 
     public function send_credentials(Request $request){
 
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+ 
+
+ 
         $usuario = request('email');
         $subject = "Asunto del correo";
         $for = request('email');
@@ -93,10 +99,12 @@ class adminController extends Controller
 
 
      return view('admin.dashboard', compact('pedidos'));
+    }
 
+    public function logout(){
+        Auth::logout();
 
-
-
+        return redirect()->route('login');
     }
 
 

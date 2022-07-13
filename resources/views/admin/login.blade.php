@@ -1,10 +1,15 @@
 @extends('plantilla')
+@section('contenido')
+    
 @include('admin.navegacion')
 <div class="container">
     <div class="row mt-5 justify-content-center ">
         <div class="col-4 mt-5 shadow-sm bg-white px-5">
-            {{$errors}}
-            <h4 class="text-center mt-5">Login Usario administrador</h4>
+            <div class="col-12 text-center mt-5">
+                <img src="img/logo2.png" class="img-fluid w-50" alt="">
+                <h4 class="text-center mt-3">Administrador</h4>
+                <small>{{$errors}}</small>
+            </div>
             <form action="{{route('administrador_login')}}" method="POST">
                 @csrf @method('POST')
                 <div class="form-group mb-3">
@@ -24,3 +29,4 @@
         </div>
     </div>
 </div>
+@endsection

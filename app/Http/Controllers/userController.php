@@ -111,5 +111,16 @@ class userController extends Controller
 
 
 
+    public function index_login(){
+
+
+        $usuarios = User::all();
+
+        return view('usuario.login', compact('usuarios'));
+
+    }
+
+
+
 }
                            

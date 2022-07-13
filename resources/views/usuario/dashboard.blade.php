@@ -8,10 +8,13 @@
         <div class="col-12 text-center mt-3 mb-2 bg-primary text-white">
             <div class="row justify-content-center">
                 <div class="col-4 text-start">
-                    <button class="btn btn-danger btn-sm  mt-4">
-                        <i class="fa fa-xmark-circle pt-1"></i>
-                        Salir
-                    </button>
+                    <form action="{{route('logout_user')}}" method="POST">
+                     @csrf @method('POST')
+                        <a href="#" onclick="this.closest('form').submit()" class="btn btn-danger btn-sm  mt-4">
+                            <i class="fa fa-xmark-circle pt-1"></i>
+                            Salir
+                        </a>
+                    </form>
                 </div>
                 <div class="col-4 text-center">
                     <h3>Nuevo pedido de tinta</h3>
@@ -80,10 +83,10 @@
                     <input type="file" id="foto_tanques" name="foto_tanques" class="form-control" required>
                 </div>
                 <div class="col-4 text-center shadow-sm p-4" id="preview" >
-                    <img src="https://1.bp.blogspot.com/-p0U83nYKKGU/UpKKwA1ybjI/AAAAAAAATAw/IcKmPxqgTgQ/s1600/impresora+canon+con+sistema+de+tinta+continua.jpg" class="img-fluid" id="foto"  alt="">
+                    <img src="img/tanques.png" class="img-fluid" id="foto"  alt="">
                 </div>
                 <div class="col-12 text-center mt-3">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary mt-5">
                         <i class="fa fa-paper-plane"></i>
                         Enviar pedido de tintas
                     </button>

@@ -1,4 +1,6 @@
     @extends('plantilla')
+    @section('contenido')
+    
     @include('admin.navegacion')
     <div class="container">
         <div class="row justify-content-center">
@@ -12,7 +14,19 @@
         </div>
         <div class="row mt-2 justify-content-center ">
             <div class="col-4 mt-5 shadow-sm bg-white px-5">
-                <h4 class="text-center mt-5">Login Uusario</h4>
+                <div class="col-12 text-center">
+                    <img src="img/logo2.png" class="img-fluid w-50 mt-5" alt="">
+                    <h4 class="text-center mt-3">Usuario</h4>
+                </div>
+                <div class="col-12 m-auto">
+                    @if (session('login_fail'))
+                        <div class="alert alert-danger p-2 text-center font-weight-bold">
+                            <i class="fa fa-xmark-circle"></i>
+                            {{session('login_fail')}}
+                        </div>
+
+                    @endif
+                </div>
                 <form action="{{route('login_usuario')}}" method="POST">
                     @csrf @method('POST')
                     <div class="form-group mb-3">
@@ -26,11 +40,11 @@
                     <div class="form-group mt-4">
                         <div class="custom-control custom-checkbox mb-3">
                             <input type="checkbox" class="custom-control-input" name="remember" id="remember"  >
-                            <label class="custom-control-label" for="remember"><b>Recuerdame (como el gansito)</b></label>
+                            <label class="custom-control-label" for="remember"><b>Recordar sesión</b></label>
                         </div>
                     </div>
                    
-                    <div class="form-group text-center">
+                    <div class="form-group text-center mb-4">
                         <button class="btn btn-success">
                             Entrar
                         </button>
@@ -48,9 +62,11 @@
 
                     <select class="form-select" aria-label="Default select example" name="email">
                         <option selected >Selecciona tu correo</option>
-                        <option value="arturo.resendiz@grupopabsa.com">arturo.resendiz@grupopabsa.com</option>
-                        <option value="rh.auxiliar@grupopabsa.com">rh.auxiliar@grupopabsa.com</option>
-                        <option value="pl3.recepcion@grupopabsa.com">pl3.recepcion@grupopabsa.com</option>
+                        @forelse ($usuarios as $user)
+                        <option value="{{$user->email}}">{{$user->email}} | {{$user->name}} </option>
+                        @empty
+                            <option value="no user to send credentials">no user to send credentials</option>
+                        @endforelse
                     </select>
                     <div class="form-group text-center mt-3">
                         <button class="btn btn-success">
@@ -61,3 +77,5 @@
             </div>
         </div>
     </div>
+
+    @endsection
