@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="img/icono.jpeg" type="image/x-icon">
+   <style>
         body {
     
             background-image: url('img/background.jpg');
@@ -28,9 +30,39 @@
 
 
     @yield('contenido')
-
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="js/app.js"></script>
 <script>
+
+ let numero_tinta = document.getElementById('numero_tinta'),
+    img = document.getElementById('img_tag')
+ 
+ if(numero_tinta){
+     numero_tinta.addEventListener('change', function(){
+         
+        valor = document.getElementById('numero_tinta').value
+        img.src = 'img/'+valor+'.jpg';
+
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+    //El codigo del select
+    $(document).ready(function() {
+        $('#correos').select2();
+    });
+
+
 
     history.forward()
 

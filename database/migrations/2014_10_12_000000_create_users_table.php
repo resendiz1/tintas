@@ -20,12 +20,16 @@ return new class extends Migration
             $table->string('puesto')->nullable();
             $table->string('planta')->nullable();
             $table->string('password');
+            $table->string('pedidos_enviados')->default(0);
+            $table->string('credenciales_enviadas')->default(0);
             $table->string('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
     }
 
+
+    
     /**
      * Reverse the migrations.
      *

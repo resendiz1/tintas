@@ -55,7 +55,7 @@ Route::post('/agregar_admistrador', [adminController::class, 'store'])->name('ag
 //Ruta que envia el email que les envia las conraseña a los usuarios
 Route::post('/envio_credenciales', [adminController::class, 'send_credentials'])->name('send_credentials');
 
-Route::post('/login_admin', [adminController::class, 'login'])->name('administrador_login'); 
+Route::post('/login_admin', [adminController::class, 'login'])->name('administrador_login')->middleware('guest'); 
 
 
 //Ruta del dashboard el admiistrador
@@ -69,3 +69,5 @@ Route::get('/login_admin', [adminController::class, 'showLoginForm'])->name('adm
 
 
 Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios')->middleware('auth:adminis');
+
+Route::post('/dashbiard_admin', [adminController::class, 'logout_admin'])->name('admin.out');

@@ -1,11 +1,8 @@
 @extends('plantilla')
 @section('contenido')
-
-
-
 <div class="container">
     <div class="row mt-5 justify-content-center">
-        <div class="col-12 text-center mt-3 mb-2 bg-primary text-white">
+        <div class="col-12 text-center mt-3  bg-primary text-white rounded">
             <div class="row justify-content-center">
                 <div class="col-4 text-start">
                     <form action="{{route('logout_user')}}" method="POST">
@@ -70,14 +67,19 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="col-4 m-3">
+                <div class="col-2 p-4 ">
+                    <img src="img/544.jpg" class="img-fluid" id="img_tag" alt="">
+                </div>
+
+                <div class="col-2 m-3">
                     <label for="" class="h4">Número de tinta</label>
-                    <select class="form-select" name="numero_tinta" aria-label="Default select example">
+                    <select class="form-select" name="numero_tinta" id="numero_tinta" aria-label="Default select example">
                         <option value="544">544</option>
                         <option value="504">504</option>
                         <option value="664">664</option>
                     </select>       
                 </div>
+   
                 <div class="col-4 m-3">
                     <label for="" class="h4">Cargar foto de los tanques de tinta</label>
                     <input type="file" id="foto_tanques" name="foto_tanques" class="form-control" required>
@@ -86,7 +88,7 @@
                     <img src="img/tanques.png" class="img-fluid" id="foto"  alt="">
                 </div>
                 <div class="col-12 text-center mt-3">
-                    <button class="btn btn-primary mt-5">
+                    <button class="btn btn-primary mt-5" id="enviar">
                         <i class="fa fa-paper-plane"></i>
                         Enviar pedido de tintas
                     </button>

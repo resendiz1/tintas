@@ -1,15 +1,10 @@
     @extends('plantilla')
     @section('contenido')
     
-    @include('admin.navegacion')
+@include('admin.navegacion')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6  text-center mt-5">
-                @if (session('enviado'))
-                    <div class="alert alert-success text-center font-weight-bold">
-                        {!!session('enviado')!!}
-                    </div>
-                @endif
             </div>
         </div>
         <div class="row mt-2 justify-content-center ">
@@ -31,7 +26,7 @@
                     @csrf @method('POST')
                     <div class="form-group mb-3">
                         <label for="">Correo: </label>
-                        <input type="text" name="email" value="{{old('usuario')}}" class="form-control" required>
+                        <input type="text" name="email" value="{{old('usuario')}}" class="form-control" required autofocus>
                         <div class="form-group">
                             <label for="">Contraseña: </label>
                         </div>
@@ -57,13 +52,26 @@
         <div class="row justify-content-center mt-5">
             <div class="col-3 bg-white shadow-sm p-4">
                 <h4 class="text-center">Enviar contraseña a tu Email</h4>
+                @if (session('enviado'))
+                    <div class="alert alert-success text-center font-weight-bold">
+                        {!!session('enviado')!!}
+                    </div>
+                 @endif
+
+                @if (session('conteo'))
+                    <div class="alert alert-danger text-center">
+                        {{session('conteo')}}
+                    </div>
+                @endif
                 @error('email')
-                    {{$errors->first()}}
+                    <div class="alert alert-danger p-2 text-center">
+                        {{$errors->first()}}
+                    </div>
                 @enderror
                 <form action="{{route('send_credentials')}}" method="POST">
                     @csrf @method('POST')
 
-                    <select class="form-select" aria-label="Default select example" name="email">
+                    <select class="form-select form-select-lg" aria-label="Default select example" name="email" id="correos">
                         <option selected >Selecciona tu correo</option>
                         @forelse ($usuarios as $user)
                         <option value="{{$user->email}}">{{$user->email}} | {{$user->name}} </option>
@@ -80,5 +88,4 @@
             </div>
         </div>
     </div>
-
-    @endsection
+@endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admini;
 use App\Models\Pedido;
 use App\Models\User;
+use Exception;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -63,15 +64,37 @@ class adminController extends Controller
 
 
 
+
+
+
     public function send_credentials(Request $request){
+        
 
         $request->validate([
             'email' => 'required|email'
         ]);
- 
 
- 
+        
+
         $usuario = request('email');
+        $veces_enviadas = DB::select("SELECT credenciales_enviadas FROM users WHERE email = '$usuario' ");
+        $contador = $veces_enviadas[0]->credenciales_enviadas;
+
+
+
+
+        if($contador>=3){
+            return back()->with('conteo', 'No se pueden enviar mas de 3 veces las credenciales');
+        }
+        else{
+
+        
+ 
+        
+        
+
+     try{
+        
         $subject = "Asunto del correo";
         $for = request('email');
         $password= substr(md5($for), 0, 8);
@@ -85,7 +108,25 @@ class adminController extends Controller
 
         });
 
+
+
+
+        DB::update("UPDATE users SET credenciales_enviadas = $contador + 1  WHERE email LIKE '$usuario'");
+        
+
+
+
+
         return back()->with("enviado", "Tus credenciales fueron enviadas a: <b> $for </b> ");
+
+    }
+
+    catch(Exception $e){
+        return 'Ocurrio un error inesperado: '. $e;
+    }
+
+
+}
 
     }
 
@@ -104,6 +145,13 @@ class adminController extends Controller
     public function logout(){
         Auth::logout();
 
+        return redirect()->route('login');
+    }
+
+
+
+    public function logout_admin(){
+        Auth::logout('admini');
         return redirect()->route('login');
     }
 

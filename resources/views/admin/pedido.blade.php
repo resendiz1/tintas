@@ -46,7 +46,7 @@
 <body>
     
     <div id="main-container">
-        <h3>Se solicitan tintas del número {{$datos['numero_tinta']}} para el area de {{Auth::User()->puesto}}</h3>
+        <h2>Se solicitan tintas del número <i> {{$datos['numero_tinta']}} </i> para el area de {{Auth::User()->puesto}}</h2>
         <br>
         <img src="https://static.wixstatic.com/media/08d4fc_d1a07983fc9a4ec79b17973f2e241cad~mv2.png/v1/fill/w_220,h_86,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/logo%20pabsa%20grupo.png" width="150px" alt="">
       
@@ -54,7 +54,7 @@
             <thead>
                 <tr>
                     <th>Color</th>
-                    <th>Marquita de requerida</th>
+                    <th>Marca de requerida</th>
                 </tr>
             </thead>
             <tr>

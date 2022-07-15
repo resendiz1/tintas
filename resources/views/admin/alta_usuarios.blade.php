@@ -19,19 +19,19 @@
                 @csrf @method('POST')
                 <div class="form-group">
                     <label for="nombre" class="">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required value="Arturo Resendiz López">
+                    <input type="text" class="form-control" id="nombre" name="nombre" required >
                 </div>
                 <div class="form-group">
                     <label for="nombre" class="">Email</label>
-                    <input type="text" class="form-control" id="nombre" name="email" required value="arturo.resendiz@grupopabsa.com">
+                    <input type="text" class="form-control" id="nombre" name="email" required >
                 </div>
                 <div class="form-group">
                     <label for="">Puesto</label>
-                    <input type="text" class="form-control" name="puesto" id="" required value="Encargado de sistemas">
+                    <input type="text" class="form-control" name="puesto" id="" required >
                 </div>
                 <div class="form-group">
                     <label for="">Planta</label>
-                    <input type="text" class="form-control" name="planta" id="" required value="Planta 1">
+                    <input type="text" class="form-control" name="planta" id="" required>
                 </div>
                 <div class="form-group mt-4 text-center">
                     <button class="btn btn-success">

@@ -3,11 +3,16 @@
 @include('admin.navegacion')   
 <div class="container mt-5">
     <div class="row mt-5">
-        <div class="col-12 p-2 shadow-sm text-center rounded-pill bg-primary text-white">
+        <div class="col-12 p-2 shadow-sm text-center rounded bg-primary text-white">
             <h3>Pendientes por entregar</h3>
+            <form action="{{route('admin.out')}}" method="POST">
+                @csrf @method('POST')
+                <button class="btn btn-danger">salir</button>
+            </form>
         </div>
 
-@forelse ($pedidos as $pedido)           
+@forelse ($pedidos as $pedido)   
+
         <div class="col-6 mt-5 shadow-sm bg-white p-4">
             <div class="row p-4">
 
@@ -49,7 +54,7 @@
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12 text-center p-5">
-                            <img src="{{asset(Storage::url($pedido->foto_tanques))}}" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="img-fluid" alt="">
+                            <img src="{{asset(Storage::url($pedido->foto_tanques))}}" class="img-fluid" alt="">
                         </div>
                         <div class="col-12 mt-5 text-center">
                             <button class="btn btn-success btn-sm">
@@ -60,23 +65,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header ">
-                            <h5 class="modal-title px-0" id="staticBackdropLabel">Tanques</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                   
-                        <img src="{{asset(Storage::url($pedido->foto_tanques))}}"  alt="">
-                    
-                    
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
         </div>
 
 @empty
