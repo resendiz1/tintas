@@ -82,10 +82,11 @@
    
                 <div class="col-4 m-3">
                     <label for="" class="h4">Cargar foto de los tanques de tinta</label>
-                    <input type="file" id="foto_tanques" name="foto_tanques" class="form-control" required>
+                    <input type="file" id="foto_tanques" name="foto_tanques" class="form-control">
+                   
                 </div>
                 <div class="col-4 text-center shadow-sm p-4" id="preview" >
-                    <img src="img/tanques.png" class="img-fluid" id="foto"  alt="">
+                    <img src="img/tanques.png" class="img-fluid" id="foto"  alt="Foto de los tanquesitos">
                 </div>
                 <div class="col-12 text-center mt-3">
                     <button class="btn btn-primary mt-5" id="enviar">

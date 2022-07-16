@@ -35,17 +35,27 @@
 <script src="js/app.js"></script>
 <script>
 
- let numero_tinta = document.getElementById('numero_tinta'),
-    img = document.getElementById('img_tag')
- 
- if(numero_tinta){
-     numero_tinta.addEventListener('change', function(){
-         
-        valor = document.getElementById('numero_tinta').value
-        img.src = 'img/'+valor+'.jpg';
 
+{
+    //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos
+    if(document.getElementById('foto_tanques') && document.getElementById('foto')&&document.getElementById('preview')){
+        var input = document.getElementById('foto_tanques'),
+        img_tag = document.getElementById('foto')
+        previa = document.getElementById('preview')
 
+    //vamos a cachar los eventos que tenga este elemento, en este caso el onchange
+    input.addEventListener('change', function(e){
+        let reader = new FileReader();
+
+            reader.readAsDataURL(e.target.files[0]);
+            reader.onload = function(){
+                img_tag.src = reader.result;
+                previa.innerHTML = '';
+                previa.append(img_tag)
+            }
+        
     })
+    }
 }
 
 
@@ -56,32 +66,35 @@
 
 
 
+{
 
-    //El codigo del select
+    let numero_tinta = document.getElementById('numero_tinta'),
+        img = document.getElementById('img_tag')
+    
+    if(numero_tinta){
+        numero_tinta.addEventListener('change', function(){
+            
+            valor = document.getElementById('numero_tinta').value
+            img.src = 'img/'+valor+'.jpg';
+
+
+        })
+    }
+}
+
+
+    //El codigo del select2
     $(document).ready(function() {
         $('#correos').select2();
     });
 
 
 
+
+    {
+
     history.forward()
 
-    //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos
-    if(document.getElementById('foto_tanques')){
-        var input = document.getElementById('foto_tanques'),
-        img_tag = document.getElementById('foto')
-        previa = document.getElementById('preview')
-
-    //vamos a cachar los eventos que tenga este elemento, en este caso el onchange
-    input.addEventListener('change', function(e){
-        let reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = function(){
-            img_tag.src = reader.result;
-            previa.innerHTML = '';
-            previa.append(img_tag)
-        }
-    })
     }
 </script>
 </body>
