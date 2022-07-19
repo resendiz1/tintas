@@ -4,11 +4,9 @@
 @include('admin.navegacion')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6  text-center mt-5">
-            </div>
         </div>
         <div class="row mt-2 justify-content-center ">
-            <div class="col-4 mt-5 shadow-sm bg-white px-5">
+            <div class="col-8 col-sm-6 col-md-5 col-lg-4 mt-5 shadow-sm bg-white px-5">
                 <div class="col-12 text-center">
                     <img src="img/logo2.png" class="img-fluid w-50 mt-5" alt="">
                     <h4 class="text-center mt-3">Usuario</h4>
@@ -50,7 +48,7 @@
         </div>
 
         <div class="row justify-content-center mt-5">
-            <div class="col-3 bg-white shadow-sm p-4">
+            <div class="col-8 col-sm-8 col-md-6 col-lg-3 bg-white shadow-sm p-4">
                 <h4 class="text-center">Enviar contraseña a tu Email</h4>
                 @if (session('enviado'))
                     <div class="alert alert-success text-center font-weight-bold">
@@ -71,7 +69,7 @@
                 <form action="{{route('send_credentials')}}" method="POST">
                     @csrf @method('POST')
 
-                    <select class="form-select form-select-lg" aria-label="Default select example" name="email" id="correos">
+                    <select class="form-select form-select-lg" aria-label="Default select example" name="email" id="correos" style="width: 100% important">
                         <option selected >Selecciona tu correo</option>
                         @forelse ($usuarios as $user)
                         <option value="{{$user->email}}">{{$user->email}} | {{$user->name}} </option>
@@ -83,6 +81,8 @@
                         <button class="btn btn-success">
                             Enviar contraseña
                         </button>
+                        <br>
+                        <a href="#" class="text-success font-weight-bold text-center mt-5" >Ver video de muestra</a>
                     </div>
                 </form>
             </div>

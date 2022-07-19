@@ -36,7 +36,7 @@
 <script>
 
 
-{
+
     //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos
     if(document.getElementById('foto_tanques') && document.getElementById('foto')&&document.getElementById('preview')){
         var input = document.getElementById('foto_tanques'),
@@ -56,11 +56,27 @@
         
     })
     }
-}
 
 
 
+//Componiendo la cagada de la foto en vista previa
+// {
+//     let vista_preliminar = (event) =>{
+//         let leer_img = new FileReader();
+//         let id_img = document.getElementById('foto');
 
+
+//         leer_img.onload = () =>{
+//             if(leer_img.readyState == 2 ){
+//                 id_img.src = leer_img.result
+//             }
+//         }
+
+//     }
+
+//     leer_img.readAsDataURL(event.target.files[0])
+
+// }
 
 
 
@@ -81,6 +97,9 @@
         })
     }
 }
+
+
+
 
 
     //El codigo del select2

@@ -68,6 +68,16 @@ class userController extends Controller
 
     public function pedido(){
 
+
+        if(request('negra')==null && request('amarilla') == null && request('azul') == null && request('rosa')==null ){
+
+            return request();
+        }
+        else{
+
+      
+
+
         //Esto obtiene el ID del usuario que tiene la session abierta
         $id_usuario = Auth::user()->id;
 
@@ -109,7 +119,7 @@ class userController extends Controller
           return back()->with('enviado', 'Tu pedido fue enviado');
     }
 
-
+}
 
     public function index_login(){
 
