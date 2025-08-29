@@ -11,18 +11,39 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="img/icono.jpeg" type="image/x-icon">
    <style>
+
+        html, body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
+        .custom-control-input {
+        width: 25px;
+        height: 25px;
+        }
+
+        .custom-control-label {
+        font-size: 18px; /* Opcional: Aumenta el tamaño del texto */
+        }
+
         body {
     
             background-image: url('img/background.jpg');
-            background-position-x:center;
-            background-position-y:center;
-            height: 1000px;
-     
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;  
 
+            height: 100%;
  
         }
+        .menu:hover{
+            background-color: aliceblue;
+            cursor: pointer
+        }
+
     </style>
-    <title>Tintas</title>
+    <title>@yield('title')</title>
 </head>
 <body>
 
@@ -30,11 +51,23 @@
 
 
     @yield('contenido')
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="js/app.js"></script>
-<script>
 
+    
+    
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="js/app.js"></script>
+
+    
+    
+    
+    @yield('scripts')
+
+
+
+    
+    <script>
+    
 
 
     //Cachamos el elemento por el id, pero primero le preguntamos si es que existe el puto input file de las foticos

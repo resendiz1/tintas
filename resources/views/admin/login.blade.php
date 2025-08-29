@@ -4,7 +4,8 @@
 @include('admin.navegacion')
 <div class="container">
     <div class="row mt-5 justify-content-center ">
-        <div class="col-4 mt-5 shadow-sm bg-white px-5">
+
+        <div class="col-9 col-sm-6 col-md-6 col-lg-5 mt-5 shadow-sm bg-white px-5">
             <div class="col-12 text-center mt-5">
                 <img src="img/logo2.png" class="img-fluid w-50" alt="">
                 <h4 class="text-center mt-3">Administrador</h4>
@@ -27,6 +28,8 @@
                 </div>
             </form>
         </div>
+
     </div>
+    
 </div>
 @endsection

@@ -46,7 +46,7 @@ Route::post('/pedidos-tintas', [userController::class, 'pedido'])->name('usuario
 
 
 //Ruta que agrega a los usuario s a la base de datos
-Route::post('/agregar_usuario', [userController::class, 'store'])->name('agregar.usuario')->middleware('auth:adminis');
+Route::post('/agregar_usuario', [userController::class, 'store'])->name('agregar.usuario');
 
 //Ruta que agrega a los administradores a la base de datos
 Route::post('/agregar_admistrador', [adminController::class, 'store'])->name('agregar.administrador')->middleware('auth:adminis');
@@ -68,6 +68,6 @@ Route::view('/alta_admin', 'admin.alta_admin')->name('agregar_admin')->middlewar
 Route::get('/login_admin', [adminController::class, 'showLoginForm'])->name('admin_login')->middleware('guest');
 
 
-Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios')->middleware('auth:adminis');
+Route::view('/alta_usuario', 'admin.alta_usuarios')->name('agregar_usuarios');
 
 Route::post('/dashbiard_admin', [adminController::class, 'logout_admin'])->name('admin.out');

@@ -3,11 +3,11 @@
 @include('admin.navegacion')   
 <div class="container mt-5">
     <div class="row mt-5">
-        <div class="col-12 p-2 shadow-sm text-center rounded bg-primary text-white">
+        <div class="col-12 p-2 shadow-sm text-center rounded bg-light bg-opacity-50 text-white">
             <h3>Pendientes por entregar</h3>
             <form action="{{route('admin.out')}}" method="POST">
                 @csrf @method('POST')
-                <button class="btn btn-danger">salir</button>
+                <button class="btn btn-danger">Sign Out</button>
             </form>
         </div>
 

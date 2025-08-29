@@ -14,25 +14,27 @@ class userController extends Controller
 {
     public function  store(){
 
-        //Recibo el email y lo guado en la variable con el mismo nombre
-        $email = substr(md5(request('email')),0,8);
-
-        //Encripto el los primeros 8 caracteres del MD5 del email
-        $password_encriptada = Hash::make($email);
+        
 
 
        
 
         //Se agregan los datos a la base de datos
-        User::create([
+       $user =  User::create([
+
             'name' =>request('nombre'),
             'email' => request('email'),
             'puesto' =>request('puesto'),
             'planta' => request('planta'),
-            'password' => $password_encriptada
+            'password' => bcrypt(request('password'))
+
         ]);
 
-        return back()->with('success', 'El usuario fue creado');
+            // Iniciar sesión automáticamente
+        Auth::login($user);
+
+        // Redirigir al dashboard
+        return redirect()->route('dashboard_usuario');
     }
 
 
@@ -41,19 +43,18 @@ class userController extends Controller
 
     public function login(){
 
-        $recuerdame = request()->filled('remember');
 
 
-        $credenciales = [                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+        $credenciales = [                                                                                                
             'email' => request('email'),
             'password' =>request('password')
         ];
 
 
 
-
-        //Hash encripta las contraseñas de laravel para no guardarlas en texto plano
-        if(Auth::attempt($credenciales, $recuerdame)){
+        
+        if(Auth::attempt($credenciales)){
             request()->session()->regenerate();
             return redirect()->route('dashboard_usuario');
         }
@@ -69,10 +70,14 @@ class userController extends Controller
     public function pedido(){
 
 
+
+
         if(request('negra')==null && request('amarilla') == null && request('azul') == null && request('rosa')==null ){
 
             return request();
         }
+
+
         else{
 
       
@@ -85,22 +90,6 @@ class userController extends Controller
         $imagen = request()->file('foto_tanques')->store('public');
 
 
-
-
-        //configurando el envio de correos electronicos
-        $usuario = Auth::user()->email;
-        $subject = "Pedido de tintas para ". Auth::user()->name .' de ' . Auth::user()->puesto ;
-        $for = [Auth::user()->email, 'arturo.resendiz@grupopabsa.com'];
-        $datos = request();
-
-
-        Mail::send('admin.pedido',compact('datos', 'usuario'), function($msj) use($subject,$for){
-
-            $msj->from("appresendiz@zohomail.com","Sistemas Pabsa");
-            $msj->subject($subject);
-            $msj->to($for);
-
-        });
 
 
         Pedido::create([
